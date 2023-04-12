@@ -37,7 +37,7 @@ public class BatchConfig extends AbstractJdbcConfiguration {
         return new DataSourceProperties();
     }
 
-    @Bean
+    @Bean(name = "dataSource")
     @Primary
     public DataSource batchDatasource(DataSourceProperties batchDataSourceProperties) {
         return batchDataSourceProperties
@@ -47,7 +47,7 @@ public class BatchConfig extends AbstractJdbcConfiguration {
 
     @Bean
     @Primary
-    public DataSourceTransactionManager transactionManager(@Qualifier("batchDatasource") DataSource batchDatasource) {
+    public DataSourceTransactionManager transactionManager(@Qualifier("dataSource") DataSource batchDatasource) {
         return new DataSourceTransactionManager(batchDatasource);
     }
 

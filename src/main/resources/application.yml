@@ -12,11 +12,26 @@ management:
 spring:
   application:
     name: customer-job-engine
+  datasource:
+    batch:
+      driverClassName: org.h2.Driver
+      url: jdbc:h2:mem:customer-engine-db
   batch:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:customer-engine-db
     job:
       enabled: false
+    jdbc:
+      initialize-schema: always
+#  batch:
+#    driverClassName: org.h2.Driver
+#    url: jdbc:h2:mem:customer-engine-db
+#    job:
+#      enabled: false
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
 
 ---
 spring:
